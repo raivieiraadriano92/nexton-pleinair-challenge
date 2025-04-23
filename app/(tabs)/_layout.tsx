@@ -1,5 +1,6 @@
 import { Tabs } from "expo-router";
 import * as React from "react";
+import { Image, View } from "react-native";
 
 import { ThemeToggle } from "~/components/ThemeToggle";
 import { HomeIcon } from "~/lib/icons/Home";
@@ -14,6 +15,14 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
+          headerLeft: () => (
+            <View className="flex-1 py-1.5">
+              <Image
+                className="h-full aspect-square rounded-full"
+                source={require("~/assets/images/icon.png")}
+              />
+            </View>
+          ),
           tabBarIcon: ({ color, size }) => <HomeIcon {...{ color, size }} />,
           title: "Home",
         }}
