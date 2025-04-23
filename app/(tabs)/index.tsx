@@ -1,37 +1,65 @@
 import { FlashList } from "@shopify/flash-list";
-import { View } from "react-native";
+import { Alert, TouchableOpacity, View } from "react-native";
 import { Button } from "~/components/ui/button";
 import { Text } from "~/components/ui/text";
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "~/components/ui/dialog";
 import { TaskModal, TaskModalElement } from "~/components/TaskModal";
 import { useRef } from "react";
-
-const DATA = [
-  {
-    title: "First Item",
-  },
-  {
-    title: "Second Item",
-  },
-];
+import { Task, useTaskStore } from "~/store/taskStore";
+import { TrashIcon } from "~/lib/icons/Trash";
+import { Checkbox } from "~/components/ui/checkbox";
 
 export default function HomeScreen() {
   const refTaskModal = useRef<TaskModalElement>(null);
 
+  const { createTask, deleteTask, tasks, updateTask } = useTaskStore();
+
+  const handleOnSave = (payload: Partial<Task>) => {
+    if (payload.id) {
+      updateTask(payload);
+    } else {
+      createTask(payload.title!);
+    }
+
+    refTaskModal.current?.close();
+  };
+
+  const handleDelete = (id: number) => {
+    Alert.alert("Delete task", "Are you sure?", [
+      {
+        text: "Cancel",
+        style: "cancel",
+      },
+      {
+        text: "Delete",
+        style: "destructive",
+        onPress: () => deleteTask(id),
+      },
+    ]);
+  };
+
   return (
     <>
       <FlashList
-        data={DATA}
-        renderItem={({ item }) => <Text>{item.title}</Text>}
+        data={tasks}
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            className="h-16 border-b-border border-b-hairline px-6 items-center flex-row"
+            onPress={() => refTaskModal.current?.open(item)}
+          >
+            <Checkbox
+              checked={item.completed}
+              onCheckedChange={(value) =>
+                updateTask({ ...item, completed: value })
+              }
+            />
+            <View className="flex-1 px-6">
+              <Text>{item.title}</Text>
+            </View>
+            <TouchableOpacity onPress={() => handleDelete(item.id)}>
+              <TrashIcon className="text-destructive h-8 w-8" />
+            </TouchableOpacity>
+          </TouchableOpacity>
+        )}
         estimatedItemSize={200}
       />
       <View className="p-6 border-t-border border-t-hairline">
@@ -39,7 +67,7 @@ export default function HomeScreen() {
           <Text>New Task</Text>
         </Button>
       </View>
-      <TaskModal onSave={() => {}} ref={refTaskModal} />
+      <TaskModal onSave={handleOnSave} ref={refTaskModal} />
     </>
   );
 }
