@@ -59,3 +59,7 @@ pnpm dev
 - Data is persisted locally with AsyncStorage.
 
 ## 📱 Screenshots
+
+![Dark Theme](https://raw.githubusercontent.com/raivieiraadriano92/todo-pleinair/refs/heads/main/assets/images/Screenshot2.png)
+
+![light Theme](https://raw.githubusercontent.com/raivieiraadriano92/todo-pleinair/refs/heads/main/assets/images/screenshot1.png)
