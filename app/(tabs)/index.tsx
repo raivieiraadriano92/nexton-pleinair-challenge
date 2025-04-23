@@ -1,4 +1,3 @@
-import { FlashList } from "@shopify/flash-list";
 import { Alert, View } from "react-native";
 import { Button } from "~/components/ui/button";
 import { Text } from "~/components/ui/text";
@@ -7,6 +6,7 @@ import { useMemo, useRef, useState } from "react";
 import { Task, useTaskStore } from "~/store/taskStore";
 import { LIST_FILTER, ListFilter } from "~/components/ListFilter";
 import { ListItem } from "~/components/ListItem";
+import Animated, { LinearTransition } from "react-native-reanimated";
 
 export default function HomeScreen() {
   const refTaskModal = useRef<TaskModalElement>(null);
@@ -51,14 +51,18 @@ export default function HomeScreen() {
       {
         text: "Delete",
         style: "destructive",
-        onPress: () => deleteTask(id),
+        onPress: () => {
+          deleteTask(id);
+        },
       },
     ]);
   };
 
   return (
     <>
-      <FlashList
+      <Animated.FlatList
+        itemLayoutAnimation={LinearTransition}
+        keyExtractor={(item) => item.id.toString()}
         data={taskList}
         ListEmptyComponent={
           <View>
@@ -80,7 +84,6 @@ export default function HomeScreen() {
             task={item}
           />
         )}
-        estimatedItemSize={64}
       />
       <View className="p-6 border-t-border border-t-hairline">
         <Button onPress={() => refTaskModal.current?.open()} size="lg">
