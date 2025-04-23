@@ -57,3 +57,5 @@ pnpm dev
 - UI is styled using NativeWind, a utility-first CSS framework for React Native.
 
 - Data is persisted locally with AsyncStorage.
+
+## 📱 Screenshots
