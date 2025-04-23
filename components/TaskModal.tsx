@@ -72,19 +72,14 @@ export const TaskModal = forwardRef<TaskModalElement, TaskModalProps>(
               className="min-w-full my-6"
               defaultValue={selectedTask?.title}
               onChangeText={(value) => (refTextValue.current = value)}
-              placeholder="Write some stuff..."
+              placeholder="What do you have in mind?"
             />
           </DialogHeader>
           <DialogFooter className="flex-row">
-            <Button
-              className="flex-1"
-              onPress={close}
-              size="lg"
-              variant="outline"
-            >
+            <Button className="flex-1" onPress={close} variant="outline">
               <Text>Cancel</Text>
             </Button>
-            <Button className="flex-1" onPress={handleOnSave} size="lg">
+            <Button className="flex-1" onPress={handleOnSave}>
               <Text>Save</Text>
             </Button>
           </DialogFooter>
