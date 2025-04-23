@@ -69,7 +69,7 @@ export const TaskModal = forwardRef<TaskModalElement, TaskModalProps>(
             <DialogTitle>{selectedTask?.id ? "Edit" : "New"} Task</DialogTitle>
             <Input
               autoFocus
-              className="min-w-full"
+              className="min-w-full my-6"
               defaultValue={selectedTask?.title}
               onChangeText={(value) => (refTextValue.current = value)}
               placeholder="Write some stuff..."
