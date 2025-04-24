@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "todo-pleinair",
-    "slug": "todo-pleinair",
+    "name": "ToDo PleinAir",
+    "slug": "nexton-pleinair-challenge",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",

@@ -26,8 +26,8 @@ Make sure you have `node`, `expo-cli`, and a mobile simulator or Expo Go app ins
 
 ```bash
 # Clone the repository
-git clone https://github.com/raivieiraadriano92/todo-pleinair
-cd todo-pleinair
+git clone https://github.com/raivieiraadriano92/nexton-pleinair-challenge
+cd nexton-pleinair-challenge
 
 # Install dependencies
 pnpm install
@@ -73,6 +73,6 @@ This project uses **Jest** for unit testing. The following scripts are available
 
 ## 📱 Screenshots
 
-![Dark Theme](https://raw.githubusercontent.com/raivieiraadriano92/todo-pleinair/refs/heads/main/assets/images/Screenshot2.png)
+![Dark Theme](https://raw.githubusercontent.com/raivieiraadriano92/nexton-pleinair-challenge/refs/heads/main/assets/images/Screenshot2.png)
 
-![light Theme](https://raw.githubusercontent.com/raivieiraadriano92/todo-pleinair/refs/heads/main/assets/images/screenshot1.png)
+![light Theme](https://raw.githubusercontent.com/raivieiraadriano92/nexton-pleinair-challenge/refs/heads/main/assets/images/screenshot1.png)
