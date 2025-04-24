@@ -1,4 +1,4 @@
-import { Alert, View } from "react-native";
+import { Alert, Platform, View } from "react-native";
 import { Button } from "~/components/ui/button";
 import { Text } from "~/components/ui/text";
 import { TaskModal, TaskModalElement } from "~/components/TaskModal";
@@ -43,6 +43,11 @@ export default function HomeScreen() {
   };
 
   const handleDelete = (id: number) => {
+    if (Platform.OS === "web") {
+      confirm("Are you sure you want to delete this task?") && deleteTask(id);
+      return;
+    }
+
     Alert.alert("Delete task", "Are you sure?", [
       {
         text: "Cancel",
