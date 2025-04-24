@@ -43,7 +43,7 @@ pnpm dev
 ├── app/                 # Screens and routing (expo-router)
 ├── components/          # Reusable UI components
 ├── store/               # Zustand store
-├── libs/               # Utility functions used by React Native Reusables
+├── lib/               # Utility functions used by React Native Reusables
 └── ...
 
 ```
