@@ -48,6 +48,19 @@ pnpm dev
 
 ```
 
+## 🧪 Running Tests
+
+This project uses **Jest** for unit testing. The following scripts are available in `package.json`:
+
+```json
+"scripts": {
+  "test": "jest --watch --coverage=false --changedSince=origin/main",
+  "testDebug": "jest -o --watch --coverage=false",
+  "testFinal": "jest",
+  "updateSnapshots": "jest -u --coverage=false"
+}
+```
+
 ## 💡 Notes
 
 - The project uses Zustand for state due to its simplicity and performance.
